@@ -1,0 +1,66 @@
+<div class="todo box">
+  <div class="todo-title box-title">
+    やるべきこと(<span class="convey-todo-count"><%= @todos.count() %></span>)
+    <div class="btn todo-btn">
+      編集
+    </div>
+  </div>
+  <div class="todo-main box-main">
+    <%= form_with(url: achieve_todos_path, scope: :todo, local: true, id: "achieve-form") do |f| %>
+      <%= f.text_field :achieve_num, id: "achieve-num", class: "convey" %>
+    <% end %>
+    <% if !!@todos %>
+      <% @todos.each do |todo| %>
+      <div class="todo-unit">
+        <div class="todo-id convey">
+          <%= todo.id %>
+        </div>
+        <div class="todo-icon">
+          ・
+        </div>
+        <div class="todo-value">
+          <%= todo.value %>
+        </div>
+        <div class="todo-bydate">
+          <% if !!todo.bydate  %>
+            <% todoArray = todo.bydate.split("") %>
+            <div class="convey convey-bydate-on">
+              1
+            </div>
+            <span class="convey-bydate-1"><%= todoArray[0] + todoArray[1] + todoArray[2] + todoArray[3] %></span>/<span class="convey-bydate-2"><%= todoArray[4] + todoArray[5] %></span>/<span class="convey-bydate-3"><%= todoArray[6] + todoArray[7] %></span>
+            <span class="convey-bydate-4"><%= todoArray[8] + todoArray[9] %></span>:<span class="convey-bydate-5"><%= todoArray[10]  + todoArray[11] %></span>
+          <% else %>
+            <div class="convey convey-bydate-on">
+              0
+            </div>
+          <% end %>
+        </div>
+        <div class="todo-rest">
+
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <%= form_with(url: add_todos_path, scope: :todo, local: true, id: "add-form") do |f| %>
+    <div class="todo-add">
+      <div class="todo-add-icon" id="todo-achieve-submit">
+        <i class="fas fa-plus-circle"></i>
+      </div>
+      <div class="todo-value">
+        <%= f.text_field :add_value, id: "add-value", class: "add-form" %>
+      </div>
+      <div class="todo-bydate">
+        <%= f.text_field :add_bydate, id: "add-bydate", class: "add-form" %>
+      </div>
+      <div class="bydate-btns">
+        <div class="btn bydate-today">
+          今日中
+        </div>
+        <div class="btn bydate-tomorrow">
+          明日中
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
