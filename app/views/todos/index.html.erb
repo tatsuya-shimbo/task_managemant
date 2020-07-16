@@ -8,7 +8,7 @@
   </div>
   <div class="todo-main box-main">
     <%= form_with(url: achieve_todos_path, scope: :todo, local: true, id: "todo-achieve-form") do |f| %>
-      <%= f.text_field :achieve_num, id: "todo-achieve-num", class: "convey achieve-num" %>
+      <%= f.text_field :achieve_num, id: "todo-achieve-num", class: "convey" %>
     <% end %>
     <% if !!@todos %>
       <% @todos.each do |todo| %>
@@ -44,7 +44,7 @@
     <% end %>
     <%= form_with(url: add_todos_path, scope: :todo, local: true, id: "todo-add-form") do |f| %>
     <div class="todo-add add">
-      <div class="todo-add-icon" id="todo-add-submit">
+      <div class="todo-add-icon" id="todo-achieve-submit">
         <i class="fas fa-plus-circle"></i>
       </div>
       <div class="todo-value">
@@ -68,45 +68,3 @@
     <% end %>
   </div>
 </div>
-<div class="shopping box">
-  <div class="shopping-title box-title">
-    <%= link_to "買い物メモ", shoppings_path, data: {"turbolinks" => false} %>
-    (<span class="convey-shopping-count"><%= @shoppings.count() %></span>)
-    <div class="btn shopping-btn">
-      編集
-    </div>
-  </div>
-  <div class="shopping-main box-main">
-    <%= form_with(url: achieve_shoppings_path, scope: :shopping, local: true, id: "shopping-achieve-form") do |f| %>
-      <%= f.text_field :achieve_num, id: "shopping-achieve-num", class: "convey achieve-num" %>
-    <% end %>
-    <% if !!@shoppings %>
-      <% @shoppings.each do |shopping| %>
-      <div class="shopping-unit unit">
-        <div class="shopping-id convey">
-          <%= shopping.id %>
-        </div>
-        <div class="shopping-icon icon">
-          ・
-        </div>
-        <div class="shopping-value value">
-          <%= shopping.value %>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
-    <%= form_with(url: add_shoppings_path, scope: :shopping, local: true, id: "shopping-add-form") do |f| %>
-    <div class="shopping-add add">
-      <div class="shopping-add-icon" id="shopping-add-submit">
-        <i class="fas fa-plus-circle"></i>
-      </div>
-      <div class="shopping-value">
-        <%= f.text_field :add_value, id: "shopping-add-value", class: "add-form" %>
-      </div>
-      <div class="convey convey-submit">
-        <input type="submit" value="">
-      </div>
-    </div>
-    <% end %>
-    </div>
-  </div>

@@ -7,4 +7,11 @@ Rails.application.routes.draw do
       post :achieve
     end
   end
+
+  resources :shoppings, only: [:index] do
+    collection do
+      post :add
+      post :achieve
+    end
+  end
 end

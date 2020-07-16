@@ -76,30 +76,34 @@ $(function(){
   }, 60000);
 
   // todo 編集ボタン
-  $(".todo-btn").click(function(){
+  $(".todo-btn, .shopping-btn").click(function(){
+    var box = $(this).parents(".box");
     if ($(this).hasClass("active")) {
       $(this).removeClass("active");
-      $(".todo-add").hide();
-      $(".todo-btn").css("color", "#aaaaaa");
-      $(".todo-btn").css("background-color", "transparent");
-      $(".todo-icon").text("・");
-      $(".todo-icon").removeClass("todo-icon-active");
+      box.find(".add").hide();
+      $(this).css("color", "#aaaaaa");
+      $(this).css("background-color", "transparent");
+      box.find(".icon").text("・");
     }
     else {
       $(this).addClass("active");
-      $(".todo-add").show();
-      $(".todo-btn").css("color", "#ffffff");
-      $(".todo-btn").css("background-color", "#000000");
-      $(".todo-icon").html('<i class="fas fa-minus-circle"></i>');
-      $(".todo-icon").addClass("todo-icon-active");
-      $("#add-value").focus();
+      box.find(".add").show();
+      $(this).css("color", "#ffffff");
+      $(this).css("background-color", "#000000");
+      box.find(".icon").html('<i class="fas fa-minus-circle"></i>');
+      if ($(this).hasClass("todo-btn")) {
+        $("#todo-add-value").focus();
+      } else if ($(this).hasClass("shopping-btn")) {
+        $("#shopping-add-value").focus();
+      }
     }
 
   });
 
   // todo hover
-  $(".todo-icon").hover(function(){
-    if ($(".todo-btn").hasClass("active")) {
+  $(".icon").hover(function(){
+    var btn = $(this).parents(".box").find(".btn");
+    if (btn.hasClass("active")) {
       $(this).parent().css("border-bottom", "solid 1px #cccccc");
     }
   }, function(){
@@ -107,17 +111,21 @@ $(function(){
   });
 
   // todo achieve
-  $(".todo-icon").click(function(){
-    if ($(".todo-btn").hasClass("active")) {
-      var todoId = $(this).prev().text()*1;
-      $("#achieve-num").val(todoId);
-      $("#achieve-form").submit();
+  $(".icon").click(function(){
+    var btn = $(this).parents(".box").find(".btn");
+    if (btn.hasClass("active")) {
+      var Id = $(this).prev().text()*1;
+      var input = $(this).parents(".box-main").find(".achieve-num");
+      var form = input.parent();
+
+      input.val(Id);
+      form.submit();
     }
   });
 
   // todo add
-  $("#todo-achieve-submit").click(function(){
-    $("#add-form").submit();
+  $("#todo-add-submit").click(function(){
+    $("#todo-add-form").submit();
   });
 
   // 自動入力カット
@@ -127,20 +135,29 @@ $(function(){
   $(".bydate-today").click(function(){
     var time = $(".convey-time").text()*1;
     time = (Math.floor(time/1000000) + 1)*10000;
-    $("#add-bydate").val(time);
-    var val = $("#add-bydate").val();
-    $("#add-bydate").val("");
-    $("#add-bydate").focus().val(val);
+    $("#todo-add-bydate").val(time);
+    var val = $("#todo-add-bydate").val();
+    $("#todo-add-bydate").val("");
+    $("#todo-add-bydate").focus().val(val);
   });
 
+  // todo 明日中
   $(".bydate-tomorrow").click(function(){
     var time = $(".convey-time").text()*1;
     time = (Math.floor(time/1000000) + 2)*10000;
-    $("#add-bydate").val(time);
-    var val = $("#add-bydate").val();
-    $("#add-bydate").val("");
-    $("#add-bydate").focus().val(val);
+    $("#todo-add-bydate").val(time);
+    var val = $("#todo-add-bydate").val();
+    $("#todo-add-bydate").val("");
+    $("#todo-add-bydate").focus().val(val);
   });
+
+  // shopping add
+  $("#shopping-add-submit").click(function(){
+    $("#shopping-add-form").submit();
+  });
+
+
+
 
 
 

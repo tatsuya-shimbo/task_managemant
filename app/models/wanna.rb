@@ -1,0 +1,2 @@
+class Wanna < ApplicationRecord
+end

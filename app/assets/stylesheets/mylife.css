@@ -92,20 +92,27 @@ header {
   background-color: #000000;
 }
 
-/* todo */
-.todo-unit {
+.unit {
   margin-top: 13px;
   font-size: 25px;
   border-bottom: solid 1px transparent;
   box-sizing: border-box;
 }
 
-.todo-icon {
+.icon {
   display: inline-block;
   margin-left: 5%;
   vertical-align: top;
   box-sizing: border-box;
 }
+
+.add {
+  font-size: 25px;
+  margin-top: 17px;
+  display: none;
+}
+
+/* todo */
 
 .fa-minus-circle {
   cursor: pointer;
@@ -145,12 +152,6 @@ header {
   color: #e61717;
 }
 
-.todo-add {
-  font-size: 25px;
-  margin-top: 17px;
-  display: none;
-}
-
 .todo-add-icon {
   display: inline-block;
   margin-left: 5%;
@@ -184,4 +185,18 @@ header {
 
 .bydate-tomorrow, .bydate-today {
   margin-left: 0;
+}
+
+/* shopping */
+
+.shopping-value {
+  display: inline-block;
+  width: 35%;
+}
+
+.shopping-add-icon {
+  display: inline-block;
+  margin-left: 5%;
+  vertical-align: top;
+  box-sizing: border-box;
 }
