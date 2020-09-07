@@ -1,6 +1,6 @@
 <div class="todo box">
   <div class="todo-title box-title">
-    <%= link_to "やるべきこと", todos_path, data: {"turbolinks" => false} %>
+    <%= link_to "やるべきこと", todos_path, data: {"turbolinks" => false}, class: "box-title" %>
     (<span class="convey-todo-count"><%= @todos.count() %></span>)
     <div class="btn todo-btn">
       編集

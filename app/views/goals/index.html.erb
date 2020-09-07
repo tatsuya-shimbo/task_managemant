@@ -1,0 +1,154 @@
+<div class="goal box">
+  <div class="modal-close">
+
+  </div>
+  <div class="goal-title box-title">
+    <%= link_to "死ぬまでやりたいこと", goals_path, data: {"turbolinks" => false}, class: "box-title" %>
+    (<span class="convey-goal-count"><%= @goals.count() %></span>)
+    <div class="btn goal-achieve-btn">
+      達成
+    </div>
+    <div class="btn goal-add-btn">
+      追加
+    </div>
+    <div class="btn goal-destroy-btn">
+      削除
+    </div>
+    <div class="btn goal-swich-btn">
+      表示
+    </div>
+  </div>
+  <div class="goal-main box-main">
+    <div class="modal goal-modal goal-achieve">
+      <%= form_with(url: achieve_goals_path, scope: :goal, local: true, id: "goal-achieve-form") do |f| %>
+      <div class="goal-achieve-submit">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="goal-achieve-value">
+        
+      </div>
+      <div class="goal-achieve-date">
+        <div class="goal-achieve-title">
+          達成日
+        </div>
+        <div class="goal-date-form">
+          <%= f.text_field :achieve_date, id: "goal-achieve-date", class: "add-form" %>
+        </div>
+      </div>
+      <div class="goal-achieve-comment">
+        <div class="goal-achieve-title">
+          コメント
+        </div>
+        <div class="goal-comment-form">
+          <%= f.text_area :achieve_comment, id: "goal-achieve-comment", class: "textarea-form" %>
+        </div>
+      </div>
+      <div class="convey goal-num-form">
+        <%= f.text_field :achieve_num, id: "goal-achieve-num" %>
+      </div>
+      <div class="convey convey-submit">
+        <input type="submit" value="">
+      </div>
+      <% end %>
+    </div>
+    <%= form_with(url: add_goals_path, scope: :goal, local: true, id: "goal-add-form") do |f| %>
+    <div class="goal-add add goal-group">
+      <div class="goal-group-title">
+        追加
+      </div>
+      <div class="goal-group-main goal-add-main">
+        <div class="goal-add-icon" id="goal-add-submit">
+          <i class="fas fa-plus-circle"></i>
+        </div>
+        <div class="goal-add-category">
+          <div class="goal-category-display">
+            <div class="goal-category-display-main">
+
+            </div>
+            <div class="dropdown-icon goal-category-display-icon">
+              <i class="fas fa-caret-down"></i>
+            </div>
+          </div>
+          <div class="goal-category-dropdown dropdown">
+            <div class="goal-category-item">趣味</div>
+            <div class="goal-category-item">旅行、体験</div>
+            <div class="goal-category-item">食べ物</div>
+            <div class="goal-category-item">勉強、スキル</div>
+            <div class="goal-category-item">人間関係</div>
+          </div>
+          <%= f.text_field :add_category, id: "goal-add-category", class: "convey" %>
+        </div>
+        <div class="goal-add-value">
+          <%= f.text_field :add_value, id: "goal-add-value", class: "add-form" %>
+        </div>
+        <div class="convey convey-submit">
+          <input type="submit" value="">
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% (0..4).each do |num| %>
+    <div class="goal-group">
+      <div class="goal-group-title">
+        <%= @goal_array[num] %>
+      </div>
+      <div class="goal-group-main">
+        <% @goals = Goal.where(category: num) %>
+        <% if !!@goals %>
+          <% @goals.each do |goal| %>
+          <div class="goal-unit unit">
+            <div class="goal-id convey">
+              <%= goal.id %>
+            </div>
+            <div class="goal-icon icon">
+              <div class="goal-icon-nomal">
+                ・
+              </div>
+              <div class="goal-icon-achieve">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <%= link_to goal, method: :delete, data: { confirm: "削除しますか" } do %>
+              <div class="goal-icon-destroy">
+                <i class="fas fa-minus-circle"></i>
+              </div>
+              <% end %>
+            </div>
+            <div class="goal-value">
+              <%= goal.value %>
+            </div>
+            <div class="goal-date">
+              <% if !!goal.date %>
+              <div class="goal-date-swich">
+                1
+              </div>
+              <div class="goal-date-main">
+                <% goalDateArray = goal.date.split("") %>
+                <%= goalDateArray[0] + goalDateArray[1] + goalDateArray[2] + goalDateArray[3] %>/<%= goalDateArray[4] + goalDateArray[5] %>/<%=
+                goalDateArray[6] + goalDateArray[7] %>
+              </div>
+              <% else %>
+              <div class="goal-date-swich">
+                0
+              </div>
+              <div class="goal-date-main">
+
+              </div>
+              <% end %>
+            </div>
+            <% if !!goal.comment %>
+            <div class="btn goal-comment-btn">
+              一言
+            </div>
+            <div class="goal-comment">
+              <%= goal.comment %>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+</div>

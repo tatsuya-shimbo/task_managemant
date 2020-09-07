@@ -1,6 +1,6 @@
 <div class="todo box">
   <div class="todo-title box-title">
-    <%= link_to "やるべきこと", todos_path, data: {"turbolinks" => false} %>
+    <%= link_to "やるべきこと", todos_path, data: {"turbolinks" => false}, class: "box-title" %>
     (<span class="convey-todo-count"><%= @todos.count() %></span>)
     <div class="btn todo-btn">
       編集
@@ -68,9 +68,51 @@
     <% end %>
   </div>
 </div>
+<div class="wanna box">
+  <div class="wanna-title box-title">
+    <%= link_to "やりたいこと", wannas_path, data: {"turbolinks" => false}, class: "box-title" %>
+    (<span class="convey-wanna-count"><%= @wannas.count() %></span>)
+    <div class="btn wanna-btn">
+      編集
+    </div>
+  </div>
+  <div class="wanna-main box-main">
+    <%= form_with(url: achieve_wannas_path, scope: :wanna, local: true, id: "wanna-achieve-form") do |f| %>
+      <%= f.text_field :achieve_num, id: "wanna-achieve-num", class: "convey achieve-num" %>
+    <% end %>
+    <% if !!@wannas %>
+      <% @wannas.each do |wanna| %>
+      <div class="wanna-unit unit">
+        <div class="wanna-id convey">
+          <%= wanna.id %>
+        </div>
+        <div class="wanna-icon icon">
+          ・
+        </div>
+        <div class="wanna-value value">
+          <%= wanna.value %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <%= form_with(url: add_wannas_path, scope: :wanna, local: true, id: "wanna-add-form") do |f| %>
+    <div class="wanna-add add">
+      <div class="wanna-add-icon" id="wanna-add-submit">
+        <i class="fas fa-plus-circle"></i>
+      </div>
+      <div class="wanna-value">
+        <%= f.text_field :add_value, id: "wanna-add-value", class: "add-form" %>
+      </div>
+      <div class="convey convey-submit">
+        <input type="submit" value="">
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 <div class="shopping box">
   <div class="shopping-title box-title">
-    <%= link_to "買い物メモ", shoppings_path, data: {"turbolinks" => false} %>
+    <%= link_to "買い物メモ", shoppings_path, data: {"turbolinks" => false}, class: "box-title" %>
     (<span class="convey-shopping-count"><%= @shoppings.count() %></span>)
     <div class="btn shopping-btn">
       編集
@@ -108,5 +150,15 @@
       </div>
     </div>
     <% end %>
-    </div>
   </div>
+</div>
+<div class="goal box">
+  <div class="goal-title box-title">
+    <%= link_to "死ぬまでにやりたいこと", goals_path, data: {"turbolinks" => false}, class: "box-title" %>
+  </div>
+</div>
+<div class="dairy box">
+  <div class="dairy-title box-title">
+   <%= link_to "日記", dairies_path, data: {"turbolinks" => false }, class: "box-title" %>
+  </div>
+</div>

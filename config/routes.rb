@@ -8,10 +8,26 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :wannas, only: [:index] do
+    collection do
+      post :add
+      post :achieve
+    end
+  end
+
   resources :shoppings, only: [:index] do
     collection do
       post :add
       post :achieve
     end
   end
+
+  resources :goals, only: [:index, :destroy] do
+    collection do
+      post :add
+      post :achieve
+    end
+  end
+
+  resources :dairies
 end

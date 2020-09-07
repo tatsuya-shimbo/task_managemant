@@ -1,0 +1,46 @@
+<div class="dairy box">
+  <div class="dairy-title box-title">
+     <%= link_to "日記", dairies_path, data: {"turbolinks" => false }, class: "box-title" %>
+     <%= link_to "追加", new_dairy_path, data: {"turbolinks" => false }, class: "btn dairy-new-btn" %>
+  </div>
+  <div class="dairy-main box-main">
+    <% if @year_count != 0 %>
+      <% (1..@year_count).each do |num1| %>
+        <% @dairy_year = Dairy.where(year: 2019 + @year_count - num1) %>
+        <% if @dairy_year.present? %>
+          <div class="dairy-year">
+            <div class="dairy-year-title">
+              <%= 2019 + @year_count - num1 %>年
+            </div>
+            <div class="dairy-year-main">
+              <% (1..12).each do |num2| %>
+                <% @dairy_month = @dairy_year.where(month: num2).order(:day) %>
+                <% if @dairy_month.present? %>
+                  <div class="dairy-month">
+                    <div class="dairy-month-title">
+                      <%= num2 %>月
+                    </div>
+                    <div class="dairy-month-main">
+                      <% @dairy_month.each do |dairy| %>
+                        <div class="dairy-day">
+                          <%= link_to dairy, data: {"turbolinks" => false} , class: "dairy-day-link" do %>
+                            <div class="dairy-day-date">
+                              <%= dairy.day %>日
+                            </div>
+                            <div class="dairy-day-title">
+                              <%= dairy.title %>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

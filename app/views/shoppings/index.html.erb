@@ -1,6 +1,6 @@
 <div class="shopping box">
   <div class="shopping-title box-title">
-    <%= link_to "買い物メモ", shoppings_path, data: {"turbolinks" => false} %>
+    <%= link_to "買い物メモ", shoppings_path, data: {"turbolinks" => false}, class: "box-title" %>
     (<span class="convey-shopping-count"><%= @shoppings.count() %></span>)
     <div class="btn shopping-btn">
       編集

@@ -1,0 +1,25 @@
+<div class="dairy box">
+  <div class="dairy-title box-title">
+     <%= link_to "日記", dairies_path, data: {"turbolinks" => false }, class: "box-title" %>
+      <%= link_to "編集", edit_dairy_path, data: {"turbolinks" => false }, class: "btn dairy-edit-btn" %>
+  </div>
+  <div class="dairy-main box-main">
+    <div class="dairy-show-date">
+      <div class="dairy-show-year">
+        <%= @dairy.year %>年
+      </div>
+      <div class="dairy-show-month">
+        <%= @dairy.month %>月
+      </div>
+      <div class="dairy-show-day">
+        <%= @dairy.day %>日
+      </div>
+    </div>
+    <div class="dairy-show-title">
+      <%= @dairy.title %>
+    </div>
+    <div class="dairy-show-text">
+      <%= simple_format(@dairy.text) %>
+    </div>
+  </div>
+</div>

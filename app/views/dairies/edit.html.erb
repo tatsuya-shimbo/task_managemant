@@ -1,0 +1,48 @@
+<div class="dairy box">
+  <div class="dairy-title box-title">
+     <%= link_to "日記", dairies_path, data: {"turbolinks" => false }, class: "box-title" %>
+     <%= link_to "削除", @dairy, method: :delete, data: { confirm: "削除しますか" }, class: "btn" %>
+  </div>
+  <div class="dairy-main box-main dairy-main-form">
+    <%= form_with(model: @dairy, scope: :dairy, local: true, id: "dairy-edit-form") do |f| %>
+      <div class="dairy-form-date">
+        <div class="dairy-form-icon" id="dairy-edit-submit">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="dairy-form-year">
+          <div class="dairy-form-head">
+            年
+          </div>
+          <%= f.text_field :year, id: "dairy-edit-year", class: "add-form dairy-form" %>
+        </div>
+        <div class="dairy-form-month">
+          <div class="dairy-form-head">
+            月
+          </div>
+          <%= f.text_field :month, id: "dairy-edit-month", class: "add-form dairy-form" %>
+        </div>
+        <div class="dairy-form-day">
+          <div class="dairy-form-head">
+            日
+          </div>
+          <%= f.text_field :day, id: "dairy-edit-day", class: "add-form dairy-form" %>
+        </div>
+      </div>
+      <div class="dairy-form-title">
+        <div class="dairy-form-head">
+          タイトル
+        </div>
+        <%= f.text_field :title, id: "dairy-edit-title", class: "add-form dairy-form" %>
+      </div>
+      <div class="dairy-form-text">
+        <div class="dairy-form-head">
+          本文
+        </div>
+        <%= f.text_area :text, id: "dairy-edit-text", class: "textarea-form" %>
+      </div>
+      <div class="convey convey-submit">
+        <input type="submit" value="">
+      </div>
+    <% end %>
+  </div>
+</div>

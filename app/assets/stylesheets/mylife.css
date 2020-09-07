@@ -29,6 +29,14 @@ input {
   background-color: transparent;
 }
 
+textarea {
+  outline: none;
+  font-family: serif;
+  color: #555555;
+  background-color: transparent;
+  resize: none;
+}
+
 /* 時間表示 */
 .date {
   font-size: 35px;
@@ -62,20 +70,31 @@ header {
 }
 
 /* メイン 共通 */
+
+  /* ボタン */
 .box {
   margin-top: 50px;
 }
 
 .box-title {
-  font-size: 30px;
-  color: #222222;
+  font-size: 35px;
+  color: #4169e1;
+}
+
+.box .active {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.box .active:hover {
+  color: #ffffff;
 }
 
 .btn {
   display: inline-block;
   margin-left: 5%;
   font-size: 22px;
-  padding: 0px 5px;
+  padding: 2px 5px 0;
   border: solid 1px #aaaaaa;
   color: #aaaaaa;
   border-radius: 5px;
@@ -110,6 +129,77 @@ header {
   font-size: 25px;
   margin-top: 17px;
   display: none;
+}
+
+  /* モーダル */
+.modal {
+  position :fixed;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 15px rgba(0,0,0,0.5);
+  padding: 30px 40px 40px;
+  border-radius: 10px;
+  z-index: 10;
+  height: auto;
+  overflow: scroll;
+  display: none;
+}
+
+.modal-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+  /* ドロップダウン */
+.dropdown {
+  position: absolute;
+  width: 100%;
+  border-right: solid 1px #4160e1;
+  border-bottom: solid 1px #4160e1;
+  border-left: solid 1px #4160e1;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  display: none;
+}
+
+.dropdown-icon {
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+  /* テキストエリア */
+.textarea-form {
+  font-size: 25px;
+  width: 100%;
+  height: 100%;
+  margin-top: 5px;
+  border: solid 1px #555555;
+}
+
+.textarea-form:focus {
+  border: solid 1px #4169e1;
+}
+
+  /* 追加フォーム */
+.add-form {
+  font-size: 25px;
+  width: 100%;
+  border-bottom: solid 1px #555555;
+}
+
+.add-form:focus {
+  border-bottom: solid 1px #4169e1;
 }
 
 /* todo */
@@ -168,23 +258,36 @@ header {
   color: #4169e1;
 }
 
-.add-form {
-  font-size: 25px;
-  width: 100%;
-  border-bottom: solid 1px #555555;
+.fa-check-circle {
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.add-form:focus {
-  border-bottom: solid 1px #4169e1;
+.fa-check-circle:hover{
+  color: #ffa500;
 }
 
 .bydate-btns {
-  display: inline-block;
-  margin-left: 4px;
+display: inline-block;
+margin-left: 4px;
 }
 
 .bydate-tomorrow, .bydate-today {
-  margin-left: 0;
+margin-left: 0;
+}
+
+/* wanna */
+
+.wanna-value {
+  display: inline-block;
+  width: 35%;
+}
+
+.wanna-add-icon {
+  display: inline-block;
+  margin-left: 5%;
+  vertical-align: top;
+  box-sizing: border-box;
 }
 
 /* shopping */
@@ -199,4 +302,264 @@ header {
   margin-left: 5%;
   vertical-align: top;
   box-sizing: border-box;
+}
+
+/* goal */
+
+.goal-add-btn, .goal-destroy-btn, .goal-swich-btn {
+  margin-left: 3px;
+}
+
+.goal-group {
+  margin: 50px 3% 0;
+}
+
+.goal-group-title {
+  font-size: 28px;
+}
+
+.goal-value {
+  display: inline-block;
+  width: 40%;
+}
+
+.goal-date {
+  display: inline-block;
+  width: 10%;
+}
+.goal-comment-btn {
+  padding-top: 0;
+}
+
+.goal-comment {
+  position: absolute;
+  display: none;
+  width: 28%;
+  margin-left: 1%;
+  font-size: 20px;
+}
+
+.goal-add-main {
+  margin-top: 15px;
+
+}
+
+.goal-add-icon {
+  display: inline-block;
+  margin-left: 5%;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.goal-add-category {
+  position: relative;
+  display: inline-block;
+  width: 25%;
+  margin-left: 2%;
+  text-align: center;
+}
+
+.goal-add-value {
+  display: inline-block;
+  width: 35%;
+  margin-left: 5%;
+}
+
+.goal-category-display {
+  border-bottom: solid 1px #555555;
+  height: 38px;
+}
+
+.goal-category-item {
+  background-color: #ffffff;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.goal-category-item:hover {
+  background-color: #e6e6fa;
+}
+
+.goal-category-display-main {
+  display: inline-block;
+}
+
+.goal-icon-achieve, .goal-icon-destroy {
+  display: none;
+}
+
+.goal-date-swich {
+  display: none;
+}
+
+.goal-achieve-value {
+  font-size: 32px;
+  display: inline;
+}
+
+.goal-achieve-date {
+  margin-top: 30px;
+}
+
+.goal-date-form {
+  margin-left: 3%;
+}
+
+.goal-achieve-comment {
+  margin-top: 30px;
+}
+
+.goal-comment-form {
+  margin-left: 3%;
+  height: 200px;
+}
+
+.goal-achieve-submit {
+  font-size: 32px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* dairy  index */
+.dairy-year {
+  margin: 20px 3%;
+}
+
+.dairy-year-title {
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dairy-year-title:hover {
+  color: #503dcc;
+}
+
+.dairy-month {
+  display: none;
+  font-size: 27px;
+  margin: 5px 3%;
+}
+
+ .dairy-month-title {
+   display: inline-block;
+   cursor: pointer;
+   transition: 0.3s;
+ }
+
+ .dairy-month-title:hover {
+  color: #503dcc;
+ }
+
+.dairy-day {
+  display: none;
+  font-size: 25px;
+  margin: 5px 3%;
+  cursor: pointer;
+}
+
+.dairy-day-link {
+  transition: 0.3s;
+}
+
+.dairy-day-link:hover {
+  color: #503dcc;
+}
+
+.dairy-day-date {
+  display: inline-block;
+}
+
+.dairy-day-title {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+/* dairy show */
+
+.dairy-show-date {
+  font-size: 40px;
+  margin: 30px 3% 20px;
+}
+
+.dairy-show-title {
+  font-size: 35px;
+  margin: 5px 4% 0;
+  border-bottom: solid 1px #4160e1;
+}
+
+.dairy-show-text {
+  font-size: 25px;
+  margin: 50px 5%;
+}
+
+.dairy-show-year {
+  display: inline-block;
+}
+
+.dairy-show-month {
+  display: inline-block;
+}
+
+.dairy-show-day {
+  display: inline-block;
+}
+
+/* dairy new  edit */
+
+.dairy-main-form {
+  margin: 3%;
+  font-size: 25px;
+}
+
+.dairy-form-icon {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.dairy-form-year {
+  display: inline-block;
+  margin-right: 40px;
+  width: 20%;
+}
+
+.dairy-form-month {
+  display: inline-block;
+  margin-right: 40px;
+  width: 20%;
+}
+
+.dairy-form-day {
+  display: inline-block;
+  width: 20%;
+}
+
+.dairy-form-title {
+  margin-top: 50px;
+}
+
+.dairy-form-text {
+  margin-top: 50px;
+}
+
+.dairy-form {
+  margin-left: 15px;
+  text-align: center;
+}
+
+#dairy-new-title, #dairy-edit-title {
+  margin-left: 15px;
+  width: 90%;
+  text-align: left;
+}
+
+#dairy-new-text, #dairy-edit-text {
+  margin-left: 15px;
+  width: 90%;
+  height: 800px;
+}
+
+.dairy-form-head {
+  font-size: 15px;
 }
