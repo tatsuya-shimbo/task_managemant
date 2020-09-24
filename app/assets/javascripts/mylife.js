@@ -28,7 +28,6 @@ $(function(){
 
   setInterval(function(){
     time();
-
   }, 1000);
 
 
@@ -78,10 +77,24 @@ $(function(){
     todoTime(i);
   }
 
+  // 自動ログアウト
+  function logoutTimer() {
+    var loginTime = $(".convey-login-time").text().replace(/\r?\n/g, '').trim();
+    var nowTime = $(".convey-date").text().replace(/\r?\n/g, '').trim();
+    if (loginTime != nowTime && loginTime != "") {
+      $.ajax({
+        type: 'DELETE',
+        url: '/logout'
+      })
+    }
+  };
+
+
 
   setInterval(function(){
     for (var i=0; i<todoCount; i++) {
       todoTime(i);
+      logoutTimer();
     }
   }, 60000);
 
@@ -150,6 +163,7 @@ $(function(){
 
   // 自動入力カット
   $(".add-form").attr('autocomplete', 'off');
+  $("input").attr('autocomplete', 'off');
 
   // todo 今日中
   $(".bydate-today").click(function(){
@@ -349,6 +363,67 @@ $(function(){
   // daiery edit
   $("#dairy-edit-submit").click(function(){
     $("#dairy-edit-form").submit();
+  });
+
+  // login モーダル削除
+  $(".login-modal").click(function(){
+    $(this).hide();
+  });
+
+  // login スタート
+  var loginArray = [];
+  $(".login-sentence").find("span").click(function(){
+    var text = $(this).attr("class");
+    if (loginArray.length <= 8) {
+      loginArray.push(text);
+    }
+    var sentencePass = "";
+    for (var i=0; i<loginArray.length; i++) {
+      sentencePass = sentencePass + loginArray[i];
+    }
+    if (sentencePass == "login") {
+      $(".login-hover").fadeIn();
+      $("#login-password").fadeIn();
+    }
+  });
+
+  // login hover
+  var loginHoverArray = [];
+  $(".login-hover-box").hover(function(){
+    $(this).css("background-color", "#555555");
+    var key = $(this).attr("data-hover");
+    loginHoverArray.push(key);
+  },function(){
+    $(this).css("background-color", "#aaaaaa")
+  })
+
+  // login hover リセット
+  $(".login-sentence").find(".a").click(function(){
+    $(".login-hover-box").css("background-color", "#ffffff");
+    loginHoverArray = [];
+    $("#login-hover").val("");
+  });
+
+  // login hover val
+  $(".login-sentence").find(".k").click(function(){
+    var loginHover = "";
+    for (var i=0; i<loginHoverArray.length; i++) {
+      loginHover = loginHover + loginHoverArray[i];
+    }
+    $("#login-hover").val(loginHover);
+  });
+
+  // login fucus
+  $(".login-hover-box").click(function(){
+    if ($(this).attr("data-hover") == "z") {
+      $("#login-password").focus();
+    } else if ($(this).attr("data-hover") == "6") {
+      var time = $(".convey-date").text().replace(/\r?\n/g, '').trim();
+      $("#login-time").val(time);
+      $("#login-form").submit();
+    } else {
+      $(".login-hover").val("d");
+    }
   });
 
 

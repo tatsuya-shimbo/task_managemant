@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :dairies
+
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
 end

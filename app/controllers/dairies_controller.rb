@@ -1,4 +1,6 @@
 class DairiesController < ApplicationController
+    before_action :require_login, only: [:create, :destroy, :update]
+
   def index
     @year_count = Dairy.last
     if !!@year_count

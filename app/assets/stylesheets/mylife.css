@@ -3,9 +3,6 @@ body {
   margin: 0;
   font-family: serif;
   color: #555555;
-  background: -moz-linear-gradient(top, #FFF, #d4ecff);
-  background: -webkit-linear-gradient(top, #FFF, #d4ecff);
-  background: linear-gradient(to bottom right, #FFF, #d4ecff);
 }
 
 a {
@@ -15,6 +12,9 @@ a {
 
 .container {
   padding: 85px 3.8% 150px 3.8%;
+  background: -moz-linear-gradient(top, #FFF, #d4ecff);
+  background: -webkit-linear-gradient(top, #FFF, #d4ecff);
+  background: linear-gradient(to bottom right, #FFF, #d4ecff);
 }
 
 .convey {
@@ -65,8 +65,13 @@ header {
 
 .header-title {
   font-size: 30px;
-  padding-left: 7%;
+  padding: 0 7%;
   padding-top: 10px;
+}
+
+.nav-logout {
+  font-size: 27px;
+  float: right;
 }
 
 /* メイン 共通 */
@@ -562,4 +567,46 @@ margin-left: 0;
 
 .dairy-form-head {
   font-size: 15px;
+}
+
+/* login */
+.login h1, h2 {
+  cursor: pointer;
+}
+
+.login span:active {
+  color: #dddddd;
+}
+
+.login-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.login-hover {
+  display: none;
+  margin: 100px 0 0 28%;
+}
+
+.login-hover-box {
+  height: 80px;
+  width: 8%;
+  border: solid 1px #555555;
+  display: inline-block;
+}
+
+.login-form {
+  position: relative;
+}
+
+.login-cover {
+  width: 200px;
+  height: 40px;
+  top: -15px;
+  position: absolute;
 }

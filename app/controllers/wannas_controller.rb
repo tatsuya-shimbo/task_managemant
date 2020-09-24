@@ -1,4 +1,6 @@
 class WannasController < ApplicationController
+  before_action :require_login, only: [:add, :achieve]
+
   def index
     @wannas = Wanna.where.not(value: nil).order(:updated_at)
   end

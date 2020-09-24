@@ -1,0 +1,75 @@
+<div class="login">
+  <div class="login-modal">
+
+  </div>
+  <div class="login-modal">
+
+  </div>
+  <div class="login-modal">
+
+  </div>
+  <div class="login-sentence">
+    <h1><span class="w">5</span><span class="a">0</span><span class="k">4</span> G<span class="g">a</span>teway <span class="o">T</span>ime-out</h1>
+    <h2><span class="n">T</span>he <span class="l">s</span>ever didn't <span class="i">r</span>espond in time.</h2>
+  </div>
+  <div class="login-hover">
+    <div class="login-hover-row">
+      <div class="login-hover-box" data-hover="0"></div>
+      <div class="login-hover-box" data-hover="1"></div>
+      <div class="login-hover-box" data-hover="2"></div>
+      <div class="login-hover-box" data-hover="3"></div>
+      <div class="login-hover-box" data-hover="4"></div>
+      <div class="login-hover-box" data-hover="5"></div>
+    </div>
+    <div class="login-hover-row">
+      <div class="login-hover-box" data-hover="6"></div>
+      <div class="login-hover-box" data-hover="7"></div>
+      <div class="login-hover-box" data-hover="8"></div>
+      <div class="login-hover-box" data-hover="9"></div>
+      <div class="login-hover-box" data-hover="a"></div>
+      <div class="login-hover-box" data-hover="b"></div>
+    </div>
+    <div class="login-hover-row">
+      <div class="login-hover-box" data-hover="c"></div>
+      <div class="login-hover-box" data-hover="d"></div>
+      <div class="login-hover-box" data-hover="e"></div>
+      <div class="login-hover-box" data-hover="f"></div>
+      <div class="login-hover-box" data-hover="g"></div>
+      <div class="login-hover-box" data-hover="h"></div>
+    </div>
+    <div class="login-hover-row">
+      <div class="login-hover-box" data-hover="i"></div>
+      <div class="login-hover-box" data-hover="j"></div>
+      <div class="login-hover-box" data-hover="k"></div>
+      <div class="login-hover-box" data-hover="l"></div>
+      <div class="login-hover-box" data-hover="m"></div>
+      <div class="login-hover-box" data-hover="n"></div>
+    </div>
+    <div class="login-hover-row">
+      <div class="login-hover-box" data-hover="o"></div>
+      <div class="login-hover-box" data-hover="p"></div>
+      <div class="login-hover-box" data-hover="q"></div>
+      <div class="login-hover-box" data-hover="r"></div>
+      <div class="login-hover-box" data-hover="s"></div>
+      <div class="login-hover-box" data-hover="t"></div>
+    </div>
+    <div class="login-hover-row">
+      <div class="login-hover-box" data-hover="u"></div>
+      <div class="login-hover-box" data-hover="v"></div>
+      <div class="login-hover-box" data-hover="w"></div>
+      <div class="login-hover-box" data-hover="x"></div>
+      <div class="login-hover-box" data-hover="y"></div>
+      <div class="login-hover-box" data-hover="z"></div>
+    </div>
+  </div>
+  <div class="login-form">
+    <%= form_with(url: login_path, scope: :session, local: true, id: "login-form") do |f| %>
+      <%= f.text_field :password, id: "login-password", class: "convey" %>
+      <%= f.text_field :hover, id: "login-hover", class: "convey" %>
+      <%= f.text_field :time, id: "login-time", class: "convey" %>
+    <% end %>
+    <div class="login-cover">
+
+    </div>
+  </div>
+</div>

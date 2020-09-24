@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  before_action :require_login, only: [:add, :achieve]
+
   def index
     @todos = Todo.where.not(value: nil).order(:updated_at)
   end

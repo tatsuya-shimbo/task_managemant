@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  before_action :require_login, only: [:add, :destory, :achieve]
+
   def index
     @goals = Goal.where.not(value: nil);
     @goal_array = ["趣味", "旅行、体験", "食べ物", "勉強、スキル", "人間関係"]

@@ -11,13 +11,20 @@
   </head>
 
   <body>
-    <header>
-      <%= render "layouts/navbar" %>
-    </header>
-    <div class="container">
-      <%= render "layouts/timer"%>
-      <%= yield %>
-    </div>
+    <% if login? %>
+      <header>
+        <%= render "layouts/navbar" %>
+      </header>
+      <div class="container">
+        <%= render "layouts/timer"%>
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="convey">
+        <%= render "layouts/timer"%>
+      </div>
+      <%= render "layouts/login" %>
+    <% end %>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   </body>
 </html>
